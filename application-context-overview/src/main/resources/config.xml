@@ -9,7 +9,9 @@
         <property name="lastName" value="Yang"/>
     </bean>
 
+    <bean id="staticXiaoYang" class="site.yangxiao.coding.Person" factory-method="getXiaoYang"/>
+
     <bean id="printer" class="site.yangxiao.coding.Printer">
-        <constructor-arg ref="xiaoYang"/>
+        <constructor-arg ref="staticXiaoYang"/>
     </bean>
 </beans>

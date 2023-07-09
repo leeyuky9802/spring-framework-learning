@@ -1,11 +1,10 @@
-package site.yangxiao.coding;
-
+import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import site.yangxiao.coding.Printer;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public class Main {
-    public static void main(String[] args) {
+public class TestCode {
+    @Test
+    public void testXML(){
         ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("config.xml");
         Printer printer = classPathXmlApplicationContext.getBean("printer", Printer.class);
         printer.print();

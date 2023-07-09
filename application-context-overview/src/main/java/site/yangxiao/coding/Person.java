@@ -31,4 +31,12 @@ public class Person {
 
     public Person() {
     }
+
+    public static Person getXiaoYang(){
+        Person person = new Person();
+        person.setEmail("leeyuky9802@gmail.com");
+        person.setFirstName("Xiao");
+        person.setLastName("Yang");
+        return person;
+    }
 }
