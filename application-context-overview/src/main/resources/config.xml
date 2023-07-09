@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="xiaoYang" class="site.yangxiao.coding.Person">
+        <property name="email" value="leeyuky9802@gmail.com"/>
+        <property name="firstName" value="Xiao"/>
+        <property name="lastName" value="Yang"/>
+    </bean>
+
+    <bean id="printer" class="site.yangxiao.coding.Printer">
+        <constructor-arg ref="xiaoYang"/>
+    </bean>
+</beans>
