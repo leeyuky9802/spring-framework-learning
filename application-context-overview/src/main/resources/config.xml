@@ -14,4 +14,6 @@
     <bean id="printer" class="site.yangxiao.coding.Printer">
         <constructor-arg ref="staticXiaoYang"/>
     </bean>
+
+    <bean id="personPostProcessor" class="site.yangxiao.coding.PersonPostProcessor"/>
 </beans>
