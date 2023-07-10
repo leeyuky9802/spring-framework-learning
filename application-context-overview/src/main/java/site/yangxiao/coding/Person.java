@@ -1,6 +1,9 @@
 package site.yangxiao.coding;
 
-public class Person {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Person implements InitializingBean, DisposableBean {
     private String firstName;
     private String lastName;
     private String email;
@@ -38,5 +41,15 @@ public class Person {
         person.setFirstName("Xiao");
         person.setLastName("Yang");
         return person;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Hi! at around 3 am at Feb 10th, 2001, I was born.");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("there ends my brief life in this very container that i built my own");
     }
 }
