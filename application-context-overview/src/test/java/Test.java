@@ -1,7 +1,10 @@
 import org.junit.Before;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import site.yangxiao.coding.Person;
 import site.yangxiao.coding.Printer;
+import site.yangxiao.coding.persistance.PersonsDAO;
 
 public class Test {
     private ClassPathXmlApplicationContext classPathXmlApplicationContext;
@@ -14,8 +17,12 @@ public class Test {
     }
     @org.junit.Test
     public void testXML(){
-        Printer printer = classPathXmlApplicationContext.getBean("printer", Printer.class);
-        printer.print();
-        classPathXmlApplicationContext.registerShutdownHook();
+        Person person = new Person();
+        person.setFirstName("Xiao");
+        person.setLastName("yang");
+        person.setEmail("leeyuky9802@gmail.com");
+
+        PersonsDAO something = classPathXmlApplicationContext.getBean("personsDAO", PersonsDAO.class);
+        something.save(person);
     }
 }

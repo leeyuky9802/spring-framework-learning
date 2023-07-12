@@ -1,13 +1,10 @@
 package site.yangxiao.coding;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Printer {
-    private Person person;
-
-    public Printer(Person person) {
-        this.person = person;
-    }
-
-    public void print(){
+    public void print(Person person){
         System.out.println(person.getFirstName() + person.getLastName() + person.getEmail());
     }
 }

@@ -1,9 +1,29 @@
 package site.yangxiao.coding;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Service;
 
-public class Person implements InitializingBean, DisposableBean {
+@Entity
+@Table(name="Persons")
+public class Person {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    private long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -35,21 +55,4 @@ public class Person implements InitializingBean, DisposableBean {
     public Person() {
     }
 
-    public static Person getXiaoYang(){
-        Person person = new Person();
-        person.setEmail("leeyuky9802@gmail.com");
-        person.setFirstName("Xiao");
-        person.setLastName("Yang");
-        return person;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("Hi! at around 3 am at Feb 10th, 2001, I was born.");
-    }
-
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("there ends my brief life in this very container that i built my own");
-    }
 }

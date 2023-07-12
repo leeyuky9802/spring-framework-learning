@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="xiaoYang" class="site.yangxiao.coding.Person" lazy-init="true">
-        <property name="email" value="leeyuky9802@gmail.com"/>
-        <property name="firstName" value="Xiao"/>
-        <property name="lastName" value="Yang"/>
+<!--     Enable annotation-based configuration -->
+    <context:annotation-config/>
+
+    <!-- Enable component scanning -->
+    <context:component-scan base-package="site.yangxiao.coding"/>
+
+
+    <bean id="sessionFactory" class="site.yangxiao.coding.persistance.SessionFactoryGenerator"
+          factory-method="sessionFactory"/>
+
+    <bean id="personsDAO" class="site.yangxiao.coding.persistance.PersonsDAO">
+        <constructor-arg name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="staticXiaoYang" class="site.yangxiao.coding.Person" factory-method="getXiaoYang"/>
-
-    <bean id="printer" class="site.yangxiao.coding.Printer">
-        <constructor-arg ref="staticXiaoYang"/>
-    </bean>
-
-    <bean id="personPostProcessor" class="site.yangxiao.coding.PersonPostProcessor"/>
 </beans>
